@@ -3,7 +3,7 @@ const chai = require('chai');
 const { expect } = chai;
 
 const Prc = require('./prc');
-const getPRCIndexWithLoop = require('./params/getPRCIndexWithLoop');
+const getPRCIndex = require('./params/getPRCIndex');
 const CocoaJS = require('../../src/cocoaJS');
 const ErrorMessages = require('./params/errorMessages');
 
@@ -12,15 +12,15 @@ describe('get PRC index', () => {
     describe('get PRC index with loop', () => {
         describe('user indices', () => {
             CocoaJS.eq(
-                getPRCIndexWithLoop.scenarios(),
-                getPRCIndexWithLoop.setup(),
-                getPRCIndexWithLoop.setup().paramsFilePath,
+                getPRCIndex.scenarios(),
+                getPRCIndex.setup(),
+                getPRCIndex.setup().paramsFilePath,
             );
         });
 
         describe('error handling', () => {
-            Object.entries(getPRCIndexWithLoop.errorScenarios()).forEach((errorScenario) => {
-                expect(() => Prc.getPRCIndexWithLoop(
+            Object.entries(getPRCIndex.errorScenarios()).forEach((errorScenario) => {
+                expect(() => Prc.getPRCIndex(
                     errorScenario[1].userId,
                     errorScenario[1].numberPRCsUsed,
                 )).to.throw(ErrorMessages.errorMessages().noPrcError);

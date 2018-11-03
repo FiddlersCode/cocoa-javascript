@@ -1,4 +1,13 @@
-class PrcIndexParams {
+class getPRCIndexWithLoop {
+    static setup() {
+        return {
+            codeFile: '../test/acceptance/prc',
+            paramsFilePath: '../test/acceptance/params/getPRCIndex',
+            methodName: 'getPRCIndex',
+            it: 'should return a user index',
+        };
+    }
+
     static scenarios() {
         return {
             scenario1: {
@@ -84,4 +93,4 @@ class PrcIndexParams {
     }
 }
 
-module.exports = PrcIndexParams;
+module.exports = getPRCIndexWithLoop;
