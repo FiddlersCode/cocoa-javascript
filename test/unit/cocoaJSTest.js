@@ -6,6 +6,13 @@ const CocoaJs = require('../../src/cocoaJS');
 
 
 describe('test eq method', () => {
+    describe('eq', () => {
+        xit('should throw an error without the expected parameter', () => {
+
+            expect(() => CocoaJs.eq(scenarios, setup, paramsFilePath)).to.throw('Cannot convert undefined or null to object');
+        });
+    });
+
     describe('get params', () => {
         it('should get the params', () => {
             const scenario = [
