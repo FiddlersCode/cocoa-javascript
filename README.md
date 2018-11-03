@@ -1,6 +1,7 @@
-# Remote Exercise
+# Cocoa JavaScript
 by Paula Muldoon
 
+This project will become an `npm` library to run parameterised testing in JS.
 
 ### Instructions
 - Run `npm install`

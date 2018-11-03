@@ -2,9 +2,10 @@ const chai = require('chai');
 
 const { expect } = chai;
 
-const Prc = require('../prc');
+const Prc = require('./prc');
 const getPRCIndexWithLoop = require('./params/getPRCIndexWithLoop');
 const getPRCIndexRecursively = require('./params/getPRCIndexRecursively');
+const CocoaJS = require('../../src/cocoaJS');
 const isUserAdmin = require('./params/isUserAdmin');
 const ErrorMessages = require('./params/errorMessages');
 
@@ -12,16 +13,11 @@ const ErrorMessages = require('./params/errorMessages');
 describe('get PRC index', () => {
     describe('get PRC index with loop', () => {
         describe('user indices', () => {
-            Object.entries(getPRCIndexWithLoop.scenarios()).forEach((scenario) => {
-                it('should return an admin index', () => {
-                    const actual = Prc.getPRCIndexWithLoop(
-                        scenario[1].userId,
-                        scenario[1].numberPRCsUsed,
-                    );
-                    expect(actual, `number of PRCs used: ${scenario[1].numberPRCsUsed}`)
-                        .to.eq(scenario[1].expected);
-                });
-            });
+            CocoaJS.eq(
+                getPRCIndexWithLoop.scenarios(),
+                getPRCIndexWithLoop.setup(),
+                getPRCIndexWithLoop.setup().paramsFilePath,
+            );
         });
 
         describe('error handling', () => {
@@ -36,18 +32,11 @@ describe('get PRC index', () => {
 
     describe('get PRC index recursively', () => {
         describe('user indices', () => {
-            Object.entries(getPRCIndexRecursively.scenarios()).forEach((scenario) => {
-                it('should return a user index', () => {
-                    const actual = Prc.getPRCIndexRecursively(
-                        scenario[1].userId,
-                        scenario[1].numberPRCsUsed,
-                        getPRCIndexRecursively.data().i,
-                        getPRCIndexRecursively.data().n,
-                    );
-                    expect(actual, `number of PRCs used: ${scenario[1].numberPRCsUsed}`)
-                        .to.eq(scenario[1].expected);
-                });
-            });
+            CocoaJS.eq(
+                getPRCIndexRecursively.scenarios(),
+                getPRCIndexRecursively.setup(),
+                getPRCIndexRecursively.setup().paramsFilePath,
+            );
         });
 
         describe('error handling', () => {
