@@ -2,7 +2,6 @@ const chai = require('chai');
 
 const { expect } = chai;
 
-
 class CocoaJS {
     static eq(scenarios, setup, paramsFilePath) {
         const paramsFile = require(paramsFilePath);
@@ -13,10 +12,14 @@ class CocoaJS {
                 const params = [];
                 CocoaJS.getParams(scenario, params);
                 const actual = codeFile[setup.methodName](...params);
-                expect(actual, `${JSON.stringify(scenario[1].message)} ${JSON.stringify(scenario[1].params)}`)
+                expect(actual, CocoaJS.getMessage(scenario))
                     .to.eq(scenario[1].expected);
             });
         });
+    }
+
+    static getMessage(scenario) {
+        return `${JSON.stringify(scenario[1].message)} ${JSON.stringify(scenario[1].params)}`;
     }
 
     static getParams(scenario, params) {
