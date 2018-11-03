@@ -8,30 +8,34 @@ const ErrorMessages = require('../../src/ErrorMessages');
 
 describe('test eq method', () => {
     describe('eq', () => {
-        xit('should throw an error without the expected parameter', () => {
-
-            expect(() => CocoaJs.eq(scenarios, setup, paramsFilePath)).to.throw(ErrorMessages.paramErrors().noExpected);
+        describe('param errors', () => {
+            xit('should throw an error without the expected parameter', () => {
+                expect(() => CocoaJs.eq(scenarios, setup, paramsFilePath))
+                    .to.throw(ErrorMessages.paramErrors().noExpected);
+            });
         });
 
-        xit('should throw an error without the code filepath parameter', () => {
+        describe('setup errors', () => {
+            xit('should throw an error without the code filepath parameter', () => {
+                expect(() => CocoaJs.eq(scenarios, setup, paramsFilePath))
+                    .to.throw(ErrorMessages.setupErrors().noCodeFilePath);
+            });
 
-            expect(() => CocoaJs.eq(scenarios, setup, paramsFilePath)).to.throw(ErrorMessages.paramErrors().noCodeFilePath);
-        });
+            xit('should throw an error without the params filepath parameter', () => {
+                expect(() => CocoaJs.eq(scenarios, setup, paramsFilePath))
+                    .to.throw(ErrorMessages.setupErrors().noParamsFilePath);
+            });
 
-        xit('should throw an error without the params filepath parameter', () => {
-
-            expect(() => CocoaJs.eq(scenarios, setup, paramsFilePath)).to.throw(ErrorMessages.paramErrors().noParamsFilePath);
-        });
-
-        xit('should throw an error without the method name parameter', () => {
-
-            expect(() => CocoaJs.eq(scenarios, setup, paramsFilePath)).to.throw(ErrorMessages.paramErrors().noMethodName);
-        });
+            xit('should throw an error without the method name parameter', () => {
+                expect(() => CocoaJs.eq(scenarios, setup, paramsFilePath))
+                    .to.throw(ErrorMessages.setupErrors().noMethodName);
+            });
 
 
-        xit('should throw an error without the it block parameter', () => {
-
-            expect(() => CocoaJs.eq(scenarios, setup, paramsFilePath)).to.throw(ErrorMessages.paramErrors().noItBlock);
+            xit('should throw an error without the it block parameter', () => {
+                expect(() => CocoaJs.eq(scenarios, setup, paramsFilePath))
+                    .to.throw(ErrorMessages.setupErrors().noItBlock);
+            });
         });
     });
 
