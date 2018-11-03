@@ -2,10 +2,10 @@ const chai = require('chai');
 
 const { expect } = chai;
 
-const Prc = require('../prc');
+const Prc = require('./prc');
 const getPRCIndexWithLoop = require('./params/getPRCIndexWithLoop');
 const getPRCIndexRecursively = require('./params/getPRCIndexRecursively');
-const CocoaJS = require('../cocoaJS/cocoaJS');
+const CocoaJS = require('../../src/cocoaJS');
 const isUserAdmin = require('./params/isUserAdmin');
 const ErrorMessages = require('./params/errorMessages');
 

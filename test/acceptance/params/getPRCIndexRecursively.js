@@ -3,8 +3,8 @@ const PrcIndexParams = require('./prcIndexParams');
 class getPRCIndexRecursively extends PrcIndexParams {
     static setup() {
         return {
-            codeFile: '../prc',
-            paramsFilePath: '../test/params/getPRCIndexRecursively',
+            codeFile: '../test/acceptance/prc',
+            paramsFilePath: '../test/acceptance/params/getPRCIndexRecursively',
             methodName: 'getPRCIndexRecursively',
             it: 'should return a user index',
         };

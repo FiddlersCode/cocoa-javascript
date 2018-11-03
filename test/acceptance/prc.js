@@ -1,4 +1,4 @@
-const ErrorMessages = require('./test/params/errorMessages');
+const ErrorMessages = require('./params/errorMessages');
 
 class PRC {
     static getPRCIndexWithLoop(userId, numberPRCsUsed) {
