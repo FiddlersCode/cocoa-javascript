@@ -14,35 +14,6 @@ describe('test eq method', () => {
                     .to.throw(ErrorMessages.scenarioErrors().noScenarios);
             });
         });
-        describe('param errors', () => {
-            xit('should throw an error without the expected parameter', () => {
-                expect(() => CocoaJs.eq())
-                    .to.throw(ErrorMessages.paramErrors().noExpected);
-            });
-        });
-
-        describe('setup errors', () => {
-            xit('should throw an error without the code filepath parameter', () => {
-                expect(() => CocoaJs.eq(scenarios, setup, paramsFilePath))
-                    .to.throw(ErrorMessages.setupErrors().noCodeFilePath);
-            });
-
-            xit('should throw an error without the params filepath parameter', () => {
-                expect(() => CocoaJs.eq(scenarios, setup, paramsFilePath))
-                    .to.throw(ErrorMessages.setupErrors().noParamsFilePath);
-            });
-
-            xit('should throw an error without the method name parameter', () => {
-                expect(() => CocoaJs.eq(scenarios, setup, paramsFilePath))
-                    .to.throw(ErrorMessages.setupErrors().noMethodName);
-            });
-
-
-            xit('should throw an error without the it block parameter', () => {
-                expect(() => CocoaJs.eq(scenarios, setup, paramsFilePath))
-                    .to.throw(ErrorMessages.setupErrors().noItBlock);
-            });
-        });
     });
 
     describe('get params', () => {
