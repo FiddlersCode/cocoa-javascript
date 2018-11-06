@@ -1,5 +1,5 @@
 {
-  "name": "cocoa_js",
+  "name": "cocoajs",
   "version": "1.0.0",
   "description": "A library to run parameterised testing in JS.",
   "main": "src/cocoaJS.js",
