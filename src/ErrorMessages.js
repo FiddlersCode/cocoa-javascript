@@ -1,4 +1,10 @@
 class ErrorMessages {
+    static scenarioErrors() {
+        return {
+            noScenarios: 'Scenarios are required.',
+        };
+    }
+
     static paramErrors() {
         return {
             noExpected: 'Expected parameter is required.',

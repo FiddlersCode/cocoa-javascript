@@ -3,7 +3,12 @@ by Paula Muldoon
 
 This project will become an `npm` library to run parameterised testing in JS.
 
-### Instructions
+### Usage Instructions
+- Run `npm install cocoajs
+`
+
+
+### Development Instructions
 - Run `npm install`
 - To run all unit tests: `npm run tests`
 - To run specific unit test file: `npx mocha test/TESTFILE`

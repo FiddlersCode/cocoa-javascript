@@ -1,9 +1,13 @@
 const chai = require('chai');
+const ErrorMessages = require('./ErrorMessages');
 
 const { expect } = chai;
 
 class CocoaJS {
     static eq(scenarios, setup, paramsFilePath) {
+        if (!scenarios) {
+            throw ErrorMessages.scenarioErrors().noScenarios;
+        }
         const paramsFile = require(paramsFilePath);
         const codeFile = require(paramsFile.setup().codeFile);
 
