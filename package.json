@@ -1,8 +1,8 @@
 {
-  "name": "remote_exercise",
+  "name": "cocoa_js",
   "version": "1.0.0",
-  "description": "",
-  "main": "src.js",
+  "description": "A library to run parameterised testing in JS.",
+  "main": "src/cocoaJS.js",
   "scripts": {
     "test": "npx mocha --recursive test/",
     "eslint": "node_modules/.bin/eslint .",
