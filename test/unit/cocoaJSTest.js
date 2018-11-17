@@ -23,14 +23,12 @@ describe('test eq method', () => {
                     params: {
                         userId: 1,
                         numberPRCsUsed: 0,
-                        i: 1,
-                        n: 7,
                     },
                 },
             ];
             const params = [];
             const actual = CocoaJs.getParams(scenario, params);
-            const expected = [1, 0, 1, 7];
+            const expected = [1, 0];
             expect(actual).to.deep.eq(expected);
         });
 
