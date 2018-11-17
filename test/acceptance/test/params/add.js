@@ -1,8 +1,11 @@
 class add {
+    static paramsFilePath() {
+        return '../test/acceptance/test/params/add';
+    }
+
     static setup() {
         return {
             codeFile: '../test/acceptance/src/Calculator',
-            paramsFilePath: '../test/acceptance/test/params/add',
             methodName: 'add',
             it: 'should add 2 numbers',
         };

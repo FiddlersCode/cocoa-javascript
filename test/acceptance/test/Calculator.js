@@ -5,7 +5,7 @@ const add = require('./params/add');
 describe('test eq method', () => {
     describe('addition method', () => {
         CocoaJS.eq(
-            add.setup().paramsFilePath,
+            add.paramsFilePath(),
             add.setup(),
             add.scenarios(),
         );
