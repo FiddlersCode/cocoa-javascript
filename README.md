@@ -4,16 +4,20 @@ by Paula Muldoon
 This project will become an `npm` library to run parameterised testing in JS.
 
 ### Usage Instructions
+- See https://github.com/FiddlersCode/cocoa-javascript-example/blob/master/README.md for a sample repo
 - Run `npm install cocoajs`
 - Create your parameters file in `{yourTestFolder}/params`
     - Name your class in the parameters file after the method you are testing
 
 ```
 class getPRCIndex {
+    static paramsFilePath() {
+        return '../test/acceptance/params/getPRCIndex';
+    }
+
     static setup() {
         return {
             codeFile: '../test/acceptance/prc',
-            paramsFilePath: '../test/acceptance/params/getPRCIndex',
             methodName: 'getPRCIndex',
             it: 'should return a user index',
         };
@@ -51,9 +55,9 @@ module.exports = getPRCIndexWithLoop;
 ```
         describe('user indices', () => {
             CocoaJS.eq(
-                getPRCIndex.scenarios(),
+                getPRCIndex.paramsFilePath(),
                 getPRCIndex.setup(),
-                getPRCIndex.setup().paramsFilePath,
+                getPRCIndex.scenarios(),
             );
         });
 ```
