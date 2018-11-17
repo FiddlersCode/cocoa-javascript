@@ -9,10 +9,10 @@ class CocoaJS {
         if (!scenarios) {
             throw ErrorMessages.scenarioErrors().noScenarios;
         }
-        const fullParamsFilePath = this.getFilePath(paramsFilePath);
+        const fullParamsFilePath = FileFinder.getFilePath(paramsFilePath);
         const paramsFile = require(fullParamsFilePath);
 
-        const fullCodeFilePath = this.getFilePath(paramsFile.setup().codeFile);
+        const fullCodeFilePath = FileFinder.getFilePath(paramsFile.setup().codeFile);
         const codeFile = require(fullCodeFilePath);
 
         Object.entries(scenarios).forEach((scenario) => {
@@ -24,10 +24,6 @@ class CocoaJS {
                     .to.eq(scenario[1].expected);
             });
         });
-    }
-
-    static getFilePath(file) {
-        return `${FileFinder.getNodeFilePath()}${file}`;
     }
 
     static getMessage(scenario) {

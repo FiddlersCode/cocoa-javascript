@@ -11,4 +11,11 @@ describe('test eq method', () => {
         const actual = FileFinder.getNodeFilePath();
         expect(expected).to.deep.eq(actual);
     });
+
+    it('should return a file path', () => {
+        const file = '../test/acceptance/src/Calculator';
+        const expected = '../test/acceptance/src/Calculator';
+        const actual = FileFinder.getFilePath(file);
+        expect(expected).to.deep.eq(actual);
+    });
 });
