@@ -1,5 +1,6 @@
 const chai = require('chai');
 const ErrorMessages = require('./ErrorMessages');
+const FileFinder = require('./fileFinder');
 
 const { expect } = chai;
 
@@ -26,11 +27,7 @@ class CocoaJS {
     }
 
     static getFilePath(file) {
-        return `${this.getNodeFilePath()}${file}`;
-    }
-
-    static getNodeFilePath() {
-        return '';
+        return `${FileFinder.getNodeFilePath()}${file}`;
     }
 
     static getMessage(scenario) {
