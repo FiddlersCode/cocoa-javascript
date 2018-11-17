@@ -4,7 +4,7 @@ const ErrorMessages = require('./ErrorMessages');
 const { expect } = chai;
 
 class CocoaJS {
-    static eq(scenarios, setup, paramsFilePath) {
+    static eq(paramsFilePath, setup, scenarios) {
         if (!scenarios) {
             throw ErrorMessages.scenarioErrors().noScenarios;
         }
