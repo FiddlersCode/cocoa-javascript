@@ -1,8 +1,11 @@
 class getPRCIndexWithLoop {
+    static paramsFilePath() {
+        return '../test/acceptance/params/getPRCIndex';
+    }
+
     static setup() {
         return {
             codeFile: '../test/acceptance/prc',
-            paramsFilePath: '../test/acceptance/params/getPRCIndex',
             methodName: 'getPRCIndex',
             it: 'should return a user index',
         };

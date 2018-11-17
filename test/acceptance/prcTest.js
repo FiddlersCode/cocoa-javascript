@@ -12,7 +12,7 @@ describe('get PRC index', () => {
     describe('get PRC index with loop', () => {
         describe('user indices', () => {
             CocoaJS.eq(
-                getPRCIndex.setup().paramsFilePath,
+                getPRCIndex.paramsFilePath(),
                 getPRCIndex.setup(),
                 getPRCIndex.scenarios(),
             );
