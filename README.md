@@ -9,17 +9,29 @@ This project will become an `npm` library to run parameterised testing in JS.
 - Create your parameters file in `{yourTestFolder}/params`
     - Name your class in the parameters file after the method you are testing
 
+For example, to write a test using the `mocha` `eq` method for this file:
 ```
-class getPRCIndex {
+class Calculator {
+    static add(number1, number2) {
+        return number1 + number2;
+    }
+}
+
+module.exports = Calculator;
+```
+
+The params file would be as below (note the filepaths with `../../../` as at the moment it needs to be the path from the node modules folder):
+```
+class add {
     static paramsFilePath() {
-        return '../test/acceptance/params/getPRCIndex';
+        return '../../../test/acceptance/test/params/add';
     }
 
     static setup() {
         return {
-            codeFile: '../test/acceptance/prc',
-            methodName: 'getPRCIndex',
-            it: 'should return a user index',
+            codeFile: '../../../test/acceptance/src/Calculator',
+            methodName: 'add',
+            it: 'should add 2 numbers',
         };
     }
 
@@ -27,39 +39,42 @@ class getPRCIndex {
         return {
             scenario1: {
                 params: {
-                    userId: 1,
-                    numberPRCsUsed: 0,
-                    i: 1,
-                    n: 7,
+                    number1: 1,
+                    number2: 2,
                 },
-                message: 'number of PRCs used',
-                expected: 1,
+                message: 'numbers to add',
+                expected: 3,
             },
 
             scenario2: {
                 params: {
-                    userId: 1,
-                    numberPRCsUsed: 3,
-                    i: 1,
-                    n: 7,
+                    number1: 2,
+                    number2: 2,
                 },
-                message: 'number of PRCs used',
+                message: 'numbers to add',
                 expected: 4,
             },
+        };
     }
 }
 
-module.exports = getPRCIndexWithLoop;
+module.exports = add;
 ```
-- In your test file, require the CocoaJs with `const CocoaJS = require('cocoaJS');` and then
+And your test file:
 ```
-        describe('user indices', () => {
-            CocoaJS.eq(
-                getPRCIndex.paramsFilePath(),
-                getPRCIndex.setup(),
-                getPRCIndex.scenarios(),
-            );
-        });
+const CocoaJS = require('../../../src/cocoaJS');
+const add = require('./params/add');
+
+
+describe('test eq method', () => {
+    describe('addition method', () => {
+        CocoaJS.eq(
+            add.paramsFilePath(),
+            add.setup(),
+            add.scenarios(),
+        );
+    });
+});
 ```
 
 
