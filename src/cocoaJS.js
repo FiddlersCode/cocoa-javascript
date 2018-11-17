@@ -8,8 +8,11 @@ class CocoaJS {
         if (!scenarios) {
             throw ErrorMessages.scenarioErrors().noScenarios;
         }
-        const paramsFile = require(paramsFilePath);
-        const codeFile = require(paramsFile.setup().codeFile);
+        const fullParamsFilePath = this.getFilePath(paramsFilePath);
+        const paramsFile = require(fullParamsFilePath);
+
+        const fullCodeFilePath = this.getFilePath(paramsFile.setup().codeFile);
+        const codeFile = require(fullCodeFilePath);
 
         Object.entries(scenarios).forEach((scenario) => {
             it(setup.it, () => {
@@ -20,6 +23,14 @@ class CocoaJS {
                     .to.eq(scenario[1].expected);
             });
         });
+    }
+
+    static getFilePath(file) {
+        return `${this.getNodeFilePath()}${file}`;
+    }
+
+    static getNodeFilePath() {
+        return '';
     }
 
     static getMessage(scenario) {
