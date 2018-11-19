@@ -1,7 +1,7 @@
 # Cocoa JavaScript
 by Paula Muldoon
 
-This project is an `npm` library to run parameterised testing in `JS` and `mocha`. Contributions are welcome (see development guide below).
+This project is an `npm` library to run parameterised testing in `JS` and [mocha](https://www.npmjs.com/package/mocha). Contributions are welcome (see development guide below).
 
 This is an MVP version which currently only supports the `mocha` `eq` method. Feedback welcome and I will be implementing further `mocha` methods this week.
 
