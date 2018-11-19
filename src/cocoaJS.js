@@ -5,14 +5,12 @@ const FileFinder = require('./fileFinder');
 const { expect } = chai;
 
 class CocoaJS {
-    static eq(paramsFilePath, setup, scenarios) {
+    static eq(setup, scenarios) {
         if (!scenarios) {
             throw ErrorMessages.scenarioErrors().noScenarios;
         }
-        const fullParamsFilePath = FileFinder.getFilePath(paramsFilePath);
-        const paramsFile = require(fullParamsFilePath);
 
-        const fullCodeFilePath = FileFinder.getFilePath(paramsFile.setup().codeFile);
+        const fullCodeFilePath = FileFinder.getFilePath(setup.codeFile);
         const codeFile = require(fullCodeFilePath);
 
         Object.entries(scenarios).forEach((scenario) => {

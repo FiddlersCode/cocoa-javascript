@@ -6,10 +6,8 @@ This project will become an `npm` library to run parameterised testing in JS.
 ### Usage Instructions
 - See https://github.com/FiddlersCode/cocoa-javascript-example/blob/master/README.md for a sample repo
 - Run `npm install cocoajs`
-- Create your parameters file in `{yourTestFolder}/params`
-    - Name your class in the parameters file after the method you are testing
 
-For example, to write a test using the `mocha` `eq` method for this file:
+To write a test using the `mocha` `eq` method for this file:
 ```
 class Calculator {
     static add(number1, number2) {
@@ -20,23 +18,19 @@ class Calculator {
 module.exports = Calculator;
 ```
 
-The params file would be as below (note the filepaths with `../../../` as at the moment it needs to be the path from the node modules folder):
-```
-class add {
-    static paramsFilePath() {
-        return '../../../test/acceptance/test/params/add';
-    }
+would have the following test file:
+```apple js
+const CocoaJS = require('../../../src/cocoaJS');
 
-    static setup() {
-        return {
-            codeFile: '../../../test/acceptance/src/Calculator',
+describe('test eq method', () => {
+    describe('addition method', () => {
+        const setup = {
+            codeFile: '../test/acceptance/src/Calculator',
             methodName: 'add',
             it: 'should add 2 numbers',
         };
-    }
 
-    static scenarios() {
-        return {
+        const scenarios = {
             scenario1: {
                 params: {
                     number1: 1,
@@ -54,29 +48,24 @@ class add {
                 message: 'numbers to add',
                 expected: 4,
             },
+
+            scenario3: {
+                params: {
+                    number1: 4,
+                    number2: 10,
+                },
+                message: 'numbers to add',
+                expected: 14,
+            },
         };
-    }
-}
-
-module.exports = add;
-```
-And your test file:
-```
-const CocoaJS = require('../../../src/cocoaJS');
-const add = require('./params/add');
-
-
-describe('test eq method', () => {
-    describe('addition method', () => {
         CocoaJS.eq(
-            add.paramsFilePath(),
-            add.setup(),
-            add.scenarios(),
+            setup,
+            scenarios,
         );
     });
 });
-```
 
+```
 
 ### Development Instructions
 - Run `npm install`
