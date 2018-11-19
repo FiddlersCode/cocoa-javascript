@@ -2,7 +2,7 @@ const chai = require('chai');
 
 const { expect } = chai;
 
-const CocoaJs = require('../../src/cocoaJS');
+const CocoaJS = require('../../src/cocoaJS');
 const ErrorMessages = require('../../src/ErrorMessages');
 
 
@@ -10,7 +10,7 @@ describe('test eq method', () => {
     describe('eq', () => {
         describe('scenarios errors', () => {
             it('should throw an error without the scenarios object', () => {
-                expect(() => CocoaJs.eq())
+                expect(() => CocoaJS.eq())
                     .to.throw(ErrorMessages.scenarioErrors().noScenarios);
             });
         });
@@ -27,7 +27,7 @@ describe('test eq method', () => {
                 },
             ];
             const params = [];
-            const actual = CocoaJs.getParams(scenario, params);
+            const actual = CocoaJS.getParams(scenario, params);
             const expected = [1, 0];
             expect(actual).to.deep.eq(expected);
         });
@@ -40,7 +40,7 @@ describe('test eq method', () => {
                 },
             ];
             const params = [];
-            const actual = CocoaJs.getParams(scenario, params);
+            const actual = CocoaJS.getParams(scenario, params);
             const expected = [];
             expect(actual).to.deep.eq(expected);
         });
@@ -53,7 +53,7 @@ describe('test eq method', () => {
                 },
             ];
             const params = [];
-            expect(() => CocoaJs.getParams(scenario, params)).to.throw('Cannot convert undefined or null to object');
+            expect(() => CocoaJS.getParams(scenario, params)).to.throw('Cannot convert undefined or null to object');
         });
     });
 });

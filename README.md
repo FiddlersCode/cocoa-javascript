@@ -5,6 +5,8 @@ This project is an `npm` library to run parameterised testing in `JS` and `mocha
 
 This is an MVP version which currently only supports the `mocha` `eq` method. Feedback welcome and I will be implementing further `mocha` methods this week.
 
+Why CocoaJS? My favourite coffee shop in the world, [Coffee Obsession](https://coffeeobsession.com/), has the delicious Cocoa Java. Cocoa JavaScript seemed a fitting commemoration. 
+
 ### Usage Instructions
 - Run `npm install cocoajs`
 
@@ -21,7 +23,7 @@ module.exports = Calculator;
 
 - And the following test file:
 ```apple js
-const CocoaJS = require('../../../src/cocoaJS');
+const CocoaJS = require('cocoajs');
 
 describe('test eq method', () => {
     describe('addition method', () => {
