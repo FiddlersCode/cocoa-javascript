@@ -4,9 +4,9 @@ const Calculator = require('../src/Calculator');
 describe('test eq method', () => {
     describe('addition method', () => {
         const setup = {
+            it: 'should add 2 numbers',
             codeFile: Calculator,
             methodName: 'add',
-            it: 'should add 2 numbers',
         };
 
         const scenarios = {

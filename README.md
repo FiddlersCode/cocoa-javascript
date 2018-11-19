@@ -23,14 +23,15 @@ module.exports = Calculator;
 
 - And the following test file:
 ```apple js
-const CocoaJS = require('cocoajs');
+const CocoaJS = require('../../../src/cocoaJS');
+const Calculator = require('../src/Calculator');
 
 describe('test eq method', () => {
     describe('addition method', () => {
         const setup = {
-            codeFile: '../test/acceptance/src/Calculator',
-            methodName: 'add',
             it: 'should add 2 numbers',
+            codeFile: Calculator,
+            methodName: 'add',
         };
 
         const scenarios = {
@@ -52,14 +53,6 @@ describe('test eq method', () => {
                 expected: 4,
             },
 
-            scenario3: {
-                params: {
-                    number1: 4,
-                    number2: 10,
-                },
-                message: 'numbers to add',
-                expected: 14,
-            },
         };
         CocoaJS.eq(
             setup,

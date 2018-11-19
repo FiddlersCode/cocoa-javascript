@@ -1,6 +1,5 @@
 const chai = require('chai');
 const ErrorMessages = require('./ErrorMessages');
-const FileFinder = require('./fileFinder');
 
 const { expect } = chai;
 
@@ -9,15 +8,13 @@ class CocoaJS {
         if (!scenarios) {
             throw ErrorMessages.scenarioErrors().noScenarios;
         }
-        const codeFile = setup.codeFile;
 
         Object.entries(scenarios).forEach((scenario) => {
             it(setup.it, () => {
                 const params = [];
                 CocoaJS.getParams(scenario, params);
-                const actual = codeFile[setup.methodName](...params);
-                expect(actual, CocoaJS.getMessage(scenario))
-                    .to.eq(scenario[1].expected);
+                const actual = setup.codeFile[setup.methodName](...params);
+                expect(actual, CocoaJS.getMessage(scenario)).to.eq(scenario[1].expected);
             });
         });
     }
