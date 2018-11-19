@@ -1,13 +1,14 @@
 # Cocoa JavaScript
 by Paula Muldoon
 
-This project will become an `npm` library to run parameterised testing in JS.
+This project is an `npm` library to run parameterised testing in `JS` and `mocha`. Contributions are welcome (see development guide below).
+
+This is an MVP version which currently only supports the `mocha` `eq` method. Feedback welcome and I will be implementing further `mocha` methods this week.
 
 ### Usage Instructions
-- See https://github.com/FiddlersCode/cocoa-javascript-example/blob/master/README.md for a sample repo
 - Run `npm install cocoajs`
 
-To write a test using the `mocha` `eq` method for this file:
+- To write a test using the `mocha` `eq` method for this file:
 ```
 class Calculator {
     static add(number1, number2) {
@@ -18,7 +19,7 @@ class Calculator {
 module.exports = Calculator;
 ```
 
-would have the following test file:
+- And the following test file:
 ```apple js
 const CocoaJS = require('../../../src/cocoaJS');
 
