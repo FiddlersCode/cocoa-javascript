@@ -9,9 +9,7 @@ class CocoaJS {
         if (!scenarios) {
             throw ErrorMessages.scenarioErrors().noScenarios;
         }
-
-        const fullCodeFilePath = FileFinder.getFilePath(setup.codeFile);
-        const codeFile = require(fullCodeFilePath);
+        const codeFile = setup.codeFile;
 
         Object.entries(scenarios).forEach((scenario) => {
             it(setup.it, () => {

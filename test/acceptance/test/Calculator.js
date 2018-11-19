@@ -1,9 +1,10 @@
 const CocoaJS = require('../../../src/cocoaJS');
+const Calculator = require('../src/Calculator');
 
 describe('test eq method', () => {
     describe('addition method', () => {
         const setup = {
-            codeFile: '../test/acceptance/src/Calculator',
+            codeFile: Calculator,
             methodName: 'add',
             it: 'should add 2 numbers',
         };
@@ -25,15 +26,6 @@ describe('test eq method', () => {
                 },
                 message: 'numbers to add',
                 expected: 4,
-            },
-
-            scenario3: {
-                params: {
-                    number1: 4,
-                    number2: 10,
-                },
-                message: 'numbers to add',
-                expected: 14,
             },
         };
         CocoaJS.eq(
