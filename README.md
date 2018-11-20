@@ -3,8 +3,6 @@ by Paula Muldoon
 
 This project is an `npm` library to run parameterised testing in `JS` and [mocha](https://www.npmjs.com/package/mocha). Contributions are welcome (see development guide below).
 
-This is an MVP version which currently only supports the `mocha` `eq` method. Feedback welcome and I will be implementing further `mocha` methods this week.
-
 Why CocoaJS? My favourite coffee shop in the world, [Coffee Obsession](https://coffeeobsession.com/), has the delicious Cocoa Java. Cocoa JavaScript seemed a fitting commemoration. 
 
 ### Usage Instructions
@@ -26,39 +24,38 @@ module.exports = Calculator;
 const CocoaJS = require('../../../src/cocoaJS');
 const Calculator = require('../src/Calculator');
 
-describe('test eq method', () => {
-    describe('addition method', () => {
-        const setup = {
-            it: 'should add 2 numbers',
-            codeFile: Calculator,
-            methodName: 'add',
-        };
+describe('addition method', () => {
+    const setup = {
+        it: 'should add 2 numbers',
+        codeFile: Calculator,
+        testMethod: 'add',
+        mochaMethod: 'eq',
+    };
 
-        const scenarios = {
-            scenario1: {
-                params: {
-                    number1: 1,
-                    number2: 2,
-                },
-                message: 'numbers to add',
-                expected: 3,
+    const scenarios = {
+        scenario1: {
+            params: {
+                number1: 1,
+                number2: 2,
             },
+            message: 'numbers to add',
+            expected: 3,
+        },
 
-            scenario2: {
-                params: {
-                    number1: 2,
-                    number2: 2,
-                },
-                message: 'numbers to add',
-                expected: 4,
+        scenario2: {
+            params: {
+                number1: 2,
+                number2: 2,
             },
+            message: 'numbers to add',
+            expected: 4,
+        },
 
-        };
-        CocoaJS.eq(
-            setup,
-            scenarios,
-        );
-    });
+    };
+    CocoaJS.eq(
+        setup,
+        scenarios,
+    );
 });
 
 ```

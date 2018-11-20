@@ -1,12 +1,13 @@
 const CocoaJS = require('../../../src/cocoaJS');
 const Calculator = require('../src/Calculator');
 
-describe('test eq method', () => {
+describe('test test method', () => {
     describe('addition method', () => {
         const setup = {
             it: 'should add 2 numbers',
             codeFile: Calculator,
-            methodName: 'add',
+            testMethod: 'add',
+            mochaMethod: 'eq',
         };
 
         const scenarios = {
@@ -28,7 +29,7 @@ describe('test eq method', () => {
                 expected: 4,
             },
         };
-        CocoaJS.eq(
+        CocoaJS.test(
             setup,
             scenarios,
         );

@@ -6,11 +6,11 @@ const CocoaJS = require('../../src/cocoaJS');
 const ErrorMessages = require('../../src/ErrorMessages');
 
 
-describe('test eq method', () => {
-    describe('eq', () => {
+describe('test test method', () => {
+    describe('test', () => {
         describe('scenarios errors', () => {
             it('should throw an error without the scenarios object', () => {
-                expect(() => CocoaJS.eq())
+                expect(() => CocoaJS.test())
                     .to.throw(ErrorMessages.scenarioErrors().noScenarios);
             });
         });
