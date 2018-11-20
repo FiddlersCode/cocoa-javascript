@@ -4,7 +4,7 @@ const ErrorMessages = require('./ErrorMessages');
 const { expect } = chai;
 
 class CocoaJS {
-    static test(setup, scenarios) {
+    static test(setup, mochaMethods, scenarios) {
         if (!scenarios) {
             throw ErrorMessages.scenarioErrors().noScenarios;
         }
@@ -14,8 +14,15 @@ class CocoaJS {
                 const params = [];
                 CocoaJS.getParams(scenario, params);
                 const actual = setup.codeFile[setup.testMethod](...params);
-                expect(actual, CocoaJS.getMessage(scenario))
-                    .to[setup.mochaMethod](scenario[1].expected);
+
+                if (mochaMethods.length === 1) {
+                    expect(actual, CocoaJS.getMessage(scenario))
+                        .to[mochaMethods[0]](scenario[1].expected);
+                }
+                if (mochaMethods.length === 2) {
+                    expect(actual, CocoaJS.getMessage(scenario))
+                        .to[mochaMethods[0]][mochaMethods[1]](scenario[1].expected);
+                }
             });
         });
     }
