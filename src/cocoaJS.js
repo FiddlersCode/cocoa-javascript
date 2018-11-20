@@ -5,6 +5,10 @@ const { expect } = chai;
 
 class CocoaJS {
     static test(setup, mochaMethods, scenarios) {
+        if (mochaMethods.length > 4) {
+            throw new Error(ErrorMessages.mochaErrors().tooManyWords);
+        }
+
         if (!scenarios) {
             throw ErrorMessages.scenarioErrors().noScenarios;
         }
@@ -16,12 +20,24 @@ class CocoaJS {
                 const actual = setup.codeFile[setup.testMethod](...params);
 
                 if (mochaMethods.length === 1) {
-                    expect(actual, CocoaJS.getMessage(scenario))
+                    return expect(actual, CocoaJS.getMessage(scenario))
                         .to[mochaMethods[0]](scenario[1].expected);
                 }
                 if (mochaMethods.length === 2) {
-                    expect(actual, CocoaJS.getMessage(scenario))
+                    return expect(actual, CocoaJS.getMessage(scenario))
                         .to[mochaMethods[0]][mochaMethods[1]](scenario[1].expected);
+                }
+
+                if (mochaMethods.length === 3) {
+                    return expect(actual, CocoaJS.getMessage(scenario))
+                        .to[mochaMethods[0]][mochaMethods[1]][mochaMethods[2]](scenario[1]
+                            .expected);
+                }
+
+                if (mochaMethods.length === 4) {
+                    return expect(actual, CocoaJS.getMessage(scenario))
+                        .to[mochaMethods[0]][mochaMethods[1]][mochaMethods[2]][mochaMethods[3]](scenario[1]
+                            .expected);
                 }
             });
         });

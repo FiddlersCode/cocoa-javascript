@@ -6,12 +6,21 @@ const CocoaJS = require('../../src/cocoaJS');
 const ErrorMessages = require('../../src/ErrorMessages');
 
 
-describe('test test method', () => {
+describe('test method', () => {
     describe('test', () => {
-        describe('scenarios errors', () => {
+        describe('errors', () => {
+            const setup = {
+            };
             it('should throw an error without the scenarios object', () => {
-                expect(() => CocoaJS.test())
+                const mochaMethods = ['have'];
+                expect(() => CocoaJS.test(setup, mochaMethods))
                     .to.throw(ErrorMessages.scenarioErrors().noScenarios);
+            });
+
+            it('should throw with more than 4 mocha words', () => {
+                const mochaMethods = ['have', 'not', 'any', 'more', 'bacon'];
+                expect(() => CocoaJS.test(setup, mochaMethods))
+                    .to.throw(ErrorMessages.mochaErrors().tooManyWords);
             });
         });
     });
