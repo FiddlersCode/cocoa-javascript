@@ -13,20 +13,20 @@ describe('test method', () => {
             };
 
             it('should throw with missing mocha method', () => {
-                const mochaMethods = [];
-                expect(() => CocoaJS.test(setup, mochaMethods))
+                const mochaAssertions = [];
+                expect(() => CocoaJS.test(setup, mochaAssertions))
                     .to.throw(ErrorMessages.mochaErrors().missingAssertion);
             });
 
             it('should throw with more than 4 mocha words', () => {
-                const mochaMethods = ['have', 'not', 'any', 'more', 'bacon'];
-                expect(() => CocoaJS.test(setup, mochaMethods))
+                const mochaAssertions = ['have', 'not', 'any', 'more', 'bacon'];
+                expect(() => CocoaJS.test(setup, mochaAssertions))
                     .to.throw(ErrorMessages.mochaErrors().tooBigAssertion);
             });
 
             it('should throw an error without the scenarios object', () => {
-                const mochaMethods = ['have'];
-                expect(() => CocoaJS.test(setup, mochaMethods))
+                const mochaAssertions = ['have'];
+                expect(() => CocoaJS.test(setup, mochaAssertions))
                     .to.throw(ErrorMessages.scenarioErrors().noScenarios);
             });
         });

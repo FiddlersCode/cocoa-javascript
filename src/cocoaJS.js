@@ -4,11 +4,11 @@ const ErrorMessages = require('./ErrorMessages');
 const { expect } = chai;
 
 class CocoaJS {
-    static test(setup, mochaMethods, scenarios) {
-        if (mochaMethods.length < 1) {
+    static test(setup, mochaAssertions, scenarios) {
+        if (mochaAssertions.length < 1) {
             throw new Error(ErrorMessages.mochaErrors().missingAssertion);
         }
-        if (mochaMethods.length > 4) {
+        if (mochaAssertions.length > 4) {
             throw new Error(ErrorMessages.mochaErrors().tooBigAssertion);
         }
 
@@ -22,27 +22,27 @@ class CocoaJS {
                 CocoaJS.getParams(scenario, params);
                 const actual = setup.codeFile[setup.testMethod](...params);
 
-                if (mochaMethods.length === 1) {
+                if (mochaAssertions.length === 1) {
                     return expect(actual, CocoaJS.getMessage(scenario))
-                        .to[mochaMethods[0]](scenario[1].expected);
+                        .to[mochaAssertions[0]](scenario[1].expected);
                 }
-                if (mochaMethods.length === 2) {
+                if (mochaAssertions.length === 2) {
                     return expect(actual, CocoaJS.getMessage(scenario))
-                        .to[mochaMethods[0]][mochaMethods[1]](scenario[1].expected);
+                        .to[mochaAssertions[0]][mochaAssertions[1]](scenario[1].expected);
                 }
 
-                if (mochaMethods.length === 3) {
+                if (mochaAssertions.length === 3) {
                     return expect(actual, CocoaJS.getMessage(scenario))
-                        .to[mochaMethods[0]][mochaMethods[1]][mochaMethods[2]](scenario[1]
+                        .to[mochaAssertions[0]][mochaAssertions[1]][mochaAssertions[2]](scenario[1]
                             .expected);
                 }
 
                 /* eslint-disable */
                 return expect(actual, CocoaJS.getMessage(scenario))
-                    .to[mochaMethods[0]]
-                    [mochaMethods[1]]
-                    [mochaMethods[2]]
-                    [mochaMethods[3]]
+                    .to[mochaAssertions[0]]
+                    [mochaAssertions[1]]
+                    [mochaAssertions[2]]
+                    [mochaAssertions[3]]
                     (scenario[1].expected);
                 /* eslint-enable */
             });

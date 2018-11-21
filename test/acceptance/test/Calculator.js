@@ -9,7 +9,7 @@ describe('test mocha methods', () => {
             testMethod: 'add',
         };
 
-        const mochaMethods = ['eq'];
+        const mochaAssertions = ['eq'];
 
         const scenarios = {
             scenario1: {
@@ -32,7 +32,7 @@ describe('test mocha methods', () => {
         };
         CocoaJS.test(
             setup,
-            mochaMethods,
+            mochaAssertions,
             scenarios,
         );
     });
@@ -44,7 +44,7 @@ describe('test mocha methods', () => {
             testMethod: 'add',
         };
 
-        const mochaMethods = ['deep', 'eq'];
+        const mochaAssertions = ['deep', 'eq'];
 
         const scenarios = {
             scenario1: {
@@ -67,7 +67,7 @@ describe('test mocha methods', () => {
         };
         CocoaJS.test(
             setup,
-            mochaMethods,
+            mochaAssertions,
             scenarios,
         );
     });
@@ -79,7 +79,7 @@ describe('test mocha methods', () => {
             testMethod: 'orderNumbers',
         };
 
-        const mochaMethods = ['have', 'ordered', 'members'];
+        const mochaAssertions = ['have', 'ordered', 'members'];
 
         const scenarios = {
             scenario1: {
@@ -92,7 +92,7 @@ describe('test mocha methods', () => {
         };
         CocoaJS.test(
             setup,
-            mochaMethods,
+            mochaAssertions,
             scenarios,
         );
     });
@@ -104,7 +104,7 @@ describe('test mocha methods', () => {
             testMethod: 'objectChecker',
         };
 
-        const mochaMethods = ['not', 'have', 'any', 'keys'];
+        const mochaAssertions = ['not', 'have', 'any', 'keys'];
 
         const scenarios = {
             scenario1: {
@@ -117,7 +117,7 @@ describe('test mocha methods', () => {
         };
         CocoaJS.test(
             setup,
-            mochaMethods,
+            mochaAssertions,
             scenarios,
         );
     });
