@@ -11,16 +11,23 @@ describe('test method', () => {
         describe('errors', () => {
             const setup = {
             };
-            it('should throw an error without the scenarios object', () => {
-                const mochaMethods = ['have'];
+
+            it('should throw with missing mocha method', () => {
+                const mochaMethods = [];
                 expect(() => CocoaJS.test(setup, mochaMethods))
-                    .to.throw(ErrorMessages.scenarioErrors().noScenarios);
+                    .to.throw(ErrorMessages.mochaErrors().missingAssertion);
             });
 
             it('should throw with more than 4 mocha words', () => {
                 const mochaMethods = ['have', 'not', 'any', 'more', 'bacon'];
                 expect(() => CocoaJS.test(setup, mochaMethods))
-                    .to.throw(ErrorMessages.mochaErrors().tooManyWords);
+                    .to.throw(ErrorMessages.mochaErrors().tooBigAssertion);
+            });
+
+            it('should throw an error without the scenarios object', () => {
+                const mochaMethods = ['have'];
+                expect(() => CocoaJS.test(setup, mochaMethods))
+                    .to.throw(ErrorMessages.scenarioErrors().noScenarios);
             });
         });
     });

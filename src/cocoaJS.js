@@ -5,8 +5,11 @@ const { expect } = chai;
 
 class CocoaJS {
     static test(setup, mochaMethods, scenarios) {
+        if (mochaMethods.length < 1) {
+            throw new Error(ErrorMessages.mochaErrors().missingAssertion);
+        }
         if (mochaMethods.length > 4) {
-            throw new Error(ErrorMessages.mochaErrors().tooManyWords);
+            throw new Error(ErrorMessages.mochaErrors().tooBigAssertion);
         }
 
         if (!scenarios) {
@@ -34,11 +37,14 @@ class CocoaJS {
                             .expected);
                 }
 
-                if (mochaMethods.length === 4) {
-                    return expect(actual, CocoaJS.getMessage(scenario))
-                        .to[mochaMethods[0]][mochaMethods[1]][mochaMethods[2]][mochaMethods[3]](scenario[1]
-                            .expected);
-                }
+                /* eslint-disable */
+                return expect(actual, CocoaJS.getMessage(scenario))
+                    .to[mochaMethods[0]]
+                    [mochaMethods[1]]
+                    [mochaMethods[2]]
+                    [mochaMethods[3]]
+                    (scenario[1].expected);
+                /* eslint-enable */
             });
         });
     }
