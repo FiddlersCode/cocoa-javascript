@@ -6,11 +6,27 @@ const CocoaJS = require('../../src/cocoaJS');
 const ErrorMessages = require('../../src/ErrorMessages');
 
 
-describe('test test method', () => {
+describe('test method', () => {
     describe('test', () => {
-        describe('scenarios errors', () => {
+        describe('errors', () => {
+            const setup = {
+            };
+
+            it('should throw with missing mocha method', () => {
+                const mochaAssertions = [];
+                expect(() => CocoaJS.test(setup, mochaAssertions))
+                    .to.throw(ErrorMessages.mochaErrors().missingAssertion);
+            });
+
+            it('should throw with more than 4 mocha words', () => {
+                const mochaAssertions = ['have', 'not', 'any', 'more', 'bacon'];
+                expect(() => CocoaJS.test(setup, mochaAssertions))
+                    .to.throw(ErrorMessages.mochaErrors().tooBigAssertion);
+            });
+
             it('should throw an error without the scenarios object', () => {
-                expect(() => CocoaJS.test())
+                const mochaAssertions = ['have'];
+                expect(() => CocoaJS.test(setup, mochaAssertions))
                     .to.throw(ErrorMessages.scenarioErrors().noScenarios);
             });
         });

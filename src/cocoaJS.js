@@ -4,7 +4,14 @@ const ErrorMessages = require('./ErrorMessages');
 const { expect } = chai;
 
 class CocoaJS {
-    static test(setup, scenarios) {
+    static test(setup, mochaAssertions, scenarios) {
+        if (mochaAssertions.length < 1) {
+            throw new Error(ErrorMessages.mochaErrors().missingAssertion);
+        }
+        if (mochaAssertions.length > 4) {
+            throw new Error(ErrorMessages.mochaErrors().tooBigAssertion);
+        }
+
         if (!scenarios) {
             throw ErrorMessages.scenarioErrors().noScenarios;
         }
@@ -14,8 +21,30 @@ class CocoaJS {
                 const params = [];
                 CocoaJS.getParams(scenario, params);
                 const actual = setup.codeFile[setup.testMethod](...params);
-                expect(actual, CocoaJS.getMessage(scenario))
-                    .to[setup.mochaMethod](scenario[1].expected);
+
+                if (mochaAssertions.length === 1) {
+                    return expect(actual, CocoaJS.getMessage(scenario))
+                        .to[mochaAssertions[0]](scenario[1].expected);
+                }
+                if (mochaAssertions.length === 2) {
+                    return expect(actual, CocoaJS.getMessage(scenario))
+                        .to[mochaAssertions[0]][mochaAssertions[1]](scenario[1].expected);
+                }
+
+                if (mochaAssertions.length === 3) {
+                    return expect(actual, CocoaJS.getMessage(scenario))
+                        .to[mochaAssertions[0]][mochaAssertions[1]][mochaAssertions[2]](scenario[1]
+                            .expected);
+                }
+
+                /* eslint-disable */
+                return expect(actual, CocoaJS.getMessage(scenario))
+                    .to[mochaAssertions[0]]
+                    [mochaAssertions[1]]
+                    [mochaAssertions[2]]
+                    [mochaAssertions[3]]
+                    (scenario[1].expected);
+                /* eslint-enable */
             });
         });
     }

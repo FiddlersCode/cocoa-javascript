@@ -1,6 +1,6 @@
 {
   "name": "cocoajs",
-  "version": "3.0.0",
+  "version": "4.0.0",
   "description": "A library to run parameterised testing in JS.",
   "main": "src/cocoaJS.js",
   "scripts": {
@@ -18,12 +18,12 @@
   "license": "ISC",
   "dependencies": {
     "chai": "^4.2.0",
+    "eslint": "^5.9.0",
     "mocha": "^5.2.0",
     "pre-commit": "^1.2.2",
     "update": "^0.7.4"
   },
   "devDependencies": {
-    "eslint": "^5.9.0",
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-plugin-import": "^2.14.0",
     "nyc": "^13.1.0"

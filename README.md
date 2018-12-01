@@ -19,46 +19,51 @@ class Calculator {
 module.exports = Calculator;
 ```
 
-- And the following test file:
+- Would have the following test file:
 ```apple js
-const CocoaJS = require('../../../src/cocoaJS');
+
+const CocoaJS = require('cocoaJS');
 const Calculator = require('../src/Calculator');
 
-describe('addition method', () => {
+describe('test add method', () => {
     const setup = {
         it: 'should add 2 numbers',
         codeFile: Calculator,
         testMethod: 'add',
-        mochaMethod: 'eq',
     };
+
+    const mochaAssertions = ['deep', 'eq'];
 
     const scenarios = {
         scenario1: {
             params: {
-                number1: 1,
-                number2: 2,
+                number1: '1',
+                number2: '2',
             },
             message: 'numbers to add',
-            expected: 3,
+            expected: '12',
         },
 
         scenario2: {
             params: {
-                number1: 2,
-                number2: 2,
+                number1: '2',
+                number2: '2',
             },
             message: 'numbers to add',
-            expected: 4,
+            expected: '22',
         },
-
     };
-    CocoaJS.eq(
+    CocoaJS.test(
         setup,
+        mochaAssertions,
         scenarios,
     );
 });
 
 ```
+### Notes
+- you can add up to 4 `mocha` chains/assertions
+- calling further chains after the initial assertion (e.g. `expect([1, 2]).to.be.an('array').that.does.not.include(3);`, where `.that.does.not.include(3)` is the further assertion, will be supported in a later version)
 
 ### Development Instructions
 - Run `npm install`
