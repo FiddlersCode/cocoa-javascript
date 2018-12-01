@@ -1,6 +1,6 @@
 {
   "name": "cocoajs",
-  "version": "3.0.0",
+  "version": "4.0.0",
   "description": "A library to run parameterised testing in JS.",
   "main": "src/cocoaJS.js",
   "scripts": {
