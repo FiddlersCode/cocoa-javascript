@@ -19,8 +19,12 @@ class Calculator {
 module.exports = Calculator;
 ```
 
-- And the following test file:
+- Would have the following test file:
 ```apple js
+
+const CocoaJS = require('cocoaJS');
+const Calculator = require('../src/Calculator');
+
 describe('test add method', () => {
     const setup = {
         it: 'should add 2 numbers',
@@ -57,6 +61,9 @@ describe('test add method', () => {
 });
 
 ```
+### Notes
+- you can add up to 4 `mocha` chains/assertions
+- calling further chains after the initial assertion (e.g. `expect([1, 2]).to.be.an('array').that.does.not.include(3);`, where `.that.does.not.include(3)` is the further assertion, will be supported in a later version)
 
 ### Development Instructions
 - Run `npm install`
