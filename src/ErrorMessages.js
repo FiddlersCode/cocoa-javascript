@@ -9,6 +9,7 @@ class ErrorMessages {
     static scenarioErrors() {
         return {
             noScenarios: 'Scenarios are required.',
+            testMessage: 'woooooooo'
         };
     }
 }
